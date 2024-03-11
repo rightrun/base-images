@@ -19,6 +19,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
+        vim \
         curl \
         unzip \
         php8.0-apcu \
@@ -29,6 +30,15 @@ RUN apt-get update \
         php8.0-readline \
         php8.0-xml \
         php8.0-zip \
+        php8.0-bcmath \
+        php8.0-gd \
+        php8.0-gnupg \
+        php8.0-imagick \
+        php8.0-mysql \
+        php8.0-rdkafka \
+        php8.0-redis \
+        php8.0-yaml \
+        php8.0-bz2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 

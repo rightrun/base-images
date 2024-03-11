@@ -9,3 +9,7 @@ Far smaller in size than PHP's official container. No need to compile any extens
 ## About swoole
 
 Swoole version is not configurable. We always provide the latest available via Ondrej's PPA to this version of PHP.
+
+```shell
+docker build -t rightrun/php8.1-swoole:swoole --target swoole .
+```

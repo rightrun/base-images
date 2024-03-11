@@ -14,6 +14,10 @@ Swoole version is not configurable. We always provide the latest available via O
 
 First, configure your swoole front controller, take note of the port you're starting the server on. For instance:
 
+```shell
+docker build -t rightrun/php8.0-swoole:swoole --target swoole .
+```
+
 ```php
 <?php
 /**
