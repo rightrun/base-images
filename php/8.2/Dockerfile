@@ -1,5 +1,5 @@
 ############################################
-# PHPDocker.io PHP 8.2 / CLI and FPM image #
+# PHPDocker.io PHP 8.2 / CLI, FPM and Swoole image #
 ############################################
 
 ### CLI ###
@@ -21,6 +21,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
+        vim \
         curl \
         unzip \
         php8.2-apcu \
@@ -31,6 +32,19 @@ RUN apt-get update \
         php8.2-readline \
         php8.2-xml \
         php8.2-zip \
+        php8.2-redis \
+        php8.2-bcmath \
+        php8.2-mcrypt \
+        php8.2-gd \
+        php8.2-gnupg \
+        php8.2-imagick \
+        php8.2-mysql \
+        php8.2-rdkafka \
+        php8.2-yaml \
+        php8.2-tideways \
+        php8.2-sqlite3 \
+        php8.2-tidy \
+        php8.2-bz2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
@@ -57,3 +71,12 @@ CMD ["/usr/sbin/php-fpm8.2", "-O" ]
 
 # Open up fcgi port
 EXPOSE 9000
+
+
+FROM cli AS swoole
+
+# Install the latest available published swoole release
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install php8.2-swoole \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*

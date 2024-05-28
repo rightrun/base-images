@@ -1,5 +1,5 @@
 ###########################################
-# PHPDocker.io PHP 7.4 / CLI & FPM images #
+# PHPDocker.io PHP 7.4 / CLI & FPM images & Swoole #
 ###########################################
 
 FROM ubuntu:focal AS cli
@@ -22,15 +22,28 @@ RUN apt-get update \
         curl \
         unzip \
         php7.4-apcu \
+        php7.4-bcmath \
+        php7.4-tideways \
+        php7.4-uuid \
+        php7.4-sqlite3 \
+        php7.4-rdkafka \
+        php7.4-protobuf \
         php7.4-apcu-bc \
         php7.4-cli \
         php7.4-curl \
+        php7.4-gd \
+        php7.4-imagick \
         php7.4-json \
         php7.4-mbstring \
         php7.4-opcache \
         php7.4-readline \
+        php7.4-mcrypt \
+        php7.4-igbinary \
         php7.4-xml \
+        php7.4-yaml \
         php7.4-zip \
+        php7.4-bz2 \
+        php7.4-redis \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
