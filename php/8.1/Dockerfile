@@ -20,6 +20,7 @@ RUN apt-get update \
     && apt-get -y --no-install-recommends install \
         ca-certificates \
         curl \
+        vim \
         unzip \
         php8.1-apcu \
         php8.1-cli \
@@ -28,7 +29,20 @@ RUN apt-get update \
         php8.1-opcache \
         php8.1-readline \
         php8.1-xml \
+        php8.1-redis \
         php8.1-zip \
+        php8.1-bcmath \
+        php8.1-mcrypt \
+        php8.1-gd \
+        php8.1-gnupg \
+        php8.1-imagick \
+        php8.1-mysql \
+        php8.1-rdkafka \
+        php8.1-yaml \
+        php8.1-tideways \
+        php8.1-sqlite3 \
+        php8.1-tidy \
+        php8.1-bz2 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* ~/.composer
 
@@ -58,3 +72,12 @@ CMD ["/usr/sbin/php-fpm8.1", "-O" ]
 
 # Open up fcgi port
 EXPOSE 9000
+
+
+FROM cli AS swoole
+
+# Install the latest available published swoole release
+RUN apt-get update \
+    && apt-get -y --no-install-recommends install php8.1-swoole \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
