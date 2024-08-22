@@ -75,4 +75,5 @@ FROM cli AS swoole
 RUN apt-get update \
     && apt-get -y --no-install-recommends install php8.0-swoole \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
+    && echo "swoole.use_shortname='Off'" >> /etc/php/8.0/cli/conf.d/25-swoole.ini
