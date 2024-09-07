@@ -1,0 +1,25 @@
+version: '3'
+services:
+  testnginx:
+    image: rightrun/nginx:1
+    container_name: testnginx
+    restart: always
+    environment:
+      LANG: "C.UTF-8" #locale -a查看安装的语种
+    ports:
+      - "8000:8000"
+    networks:
+      - "test-network"
+
+  testphpfpm:
+    image: rightrun/php8.0-fpm:v1
+    container_name: testphpfpm
+    restart: always
+    environment:
+      LANG: "C.UTF-8" #locale -a查看安装的语种
+    networks:
+      - "test-network"
+
+networks:
+  test-network:
+    driver: bridge

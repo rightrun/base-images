@@ -16,6 +16,7 @@ First, configure your swoole front controller, take note of the port you're star
 
 ```shell
 docker build -t rightrun/php8.0-swoole:swoole --target swoole .
+docker build -t rightrun/php8.0-fpm:v1 --target fpm .
 ```
 
 ```php
