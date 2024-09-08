@@ -77,3 +77,19 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
     && echo "swoole.use_shortname='Off'" >> /etc/php/8.0/cli/conf.d/25-swoole.ini
+
+
+FROM cli AS cron
+
+RUN apt-get update \
+    && apt-get -y install cron \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+
+# 复制crontab文件到容器内
+# COPY crontab /etc/cron.d/crontab
+
+# 给予执行权限并启动cron服务
+# RUN chmod 0644 /etc/cron.d/crontab
+
+CMD ["cron", "-f"]
