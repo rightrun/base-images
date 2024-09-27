@@ -79,7 +79,7 @@ RUN apt-get update \
     && echo "swoole.use_shortname='Off'" >> /etc/php/8.0/cli/conf.d/25-swoole.ini
 
 
-FROM cli AS cron
+FROM swoole AS cron
 
 RUN apt-get update \
     && apt-get -y install cron \
