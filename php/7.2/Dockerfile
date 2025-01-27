@@ -33,6 +33,7 @@ RUN apt-get update \
         php7.2-apcu-bc \
         php7.2-cli \
         php7.2-curl \
+        php7.2-mysql \
         php7.2-gd \
         php7.2-imagick \
         php7.2-json \
@@ -62,8 +63,6 @@ FROM cli AS fpm
 # Install FPM
 RUN apt-get update \
     && apt-get -y --no-install-recommends install php7.2-fpm \
-    && pecl install yaf-3.0.7 \
-    && docker-php-ext-enable yaf \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
